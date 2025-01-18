@@ -128,7 +128,7 @@ body{
 .quiz__wrapper > button:hover{
     transform: translateY(-0.15rem);
     transition: 0.3s;
-    background-color: var(--coal);
+    background-color: rgba(249, 87, 72, 0.9);
 }
 
 @media (min-width: 768px){
