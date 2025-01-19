@@ -266,7 +266,14 @@ const displayQuestion = () => {
 }
 
 const displayScore = () => {
+	const percentScore = (score / questions.length) * 100;
 	quizQuestion.textContent = `Your score is ${score} / ${questions.length}`;
+
+	// display the score as a percentage after 4secs
+	setTimeout (() => {
+		quizQuestion.textContent = `Percentage score is ${percentScore}%`;
+	}, 4000);
+
 	answerContainer.innerHTML = "";
 	document.getElementById("title").textContent = "result";
 	nextButton.style.display = "none";
