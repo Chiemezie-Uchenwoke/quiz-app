@@ -78,17 +78,6 @@ const questions = [
 	},
 
 	{
-		question: "Which Nigerian city was the capital before it was moved to Abuja in 1991?",
-
-		answers: [
-			{option: "Lagos", correct: true},
-			{option: "Kano", correct: false},
-			{option: "Port Harcourt", correct: false},
-			{option: "Ibadan", correct: false}
-		]
-	},
-
-	{
 		question: "What year did Nigeria gain its independence from British colonial rule?",
 
 		answers: [
@@ -121,3 +110,90 @@ const questions = [
 		]
 	},
 ]
+
+/* 
+--- Display our question with the question number.
+--- Display our answers.
+--- Select an option and have the option reflect whether it is right or wrong.
+--- Score value that will increment if the user clicks the correct option.
+--- Clicking the next button should take the user to the next question.
+--- If we are on the last question, let the next button show submit.
+--- Clicking the submit button should take us to a page where we see our score.
+
+*/
+const quizQuestion = document.getElementById("question");
+const answerContainer = document.getElementById("answers");
+const nextButton = document.getElementById("next");
+let questionIndex = 0;
+let score = 0;
+
+const displayQuestion = () => {
+	const questionObject = questions[questionIndex];
+	const questionNumber = questionIndex + 1;
+	
+	quizQuestion.textContent = `${questionNumber}. ${questionObject.question}`
+
+	answerContainer.innerHTML = "";
+	// display answers
+	questionObject.answers.forEach((answer) => {
+		const buttonElement = document.createElement("button");
+		buttonElement.innerText = answer.option;
+		buttonElement.dataset.check = answer.correct;
+		console.log(buttonElement)
+		answerContainer.appendChild(buttonElement);
+
+		buttonElement.addEventListener("click", (e) => {
+			const dataCheck = e.target.dataset.check === "true";
+
+			if (dataCheck){
+				e.target.style.backgroundColor = "#FFC857";
+				score++;
+			} else {
+				e.target.style.backgroundColor = "red";
+			}
+
+			const buttonArray = Array.from(answerContainer.children)
+			buttonArray.forEach(btn => {
+				btn.disabled = true;
+				btn.style.cursor = "no-drop";
+			});
+		})
+	})
+	if (questionIndex === questions.length - 1){
+		nextButton.innerHTML = "submit";
+	}
+}
+
+const displayScore = () => {
+	quizQuestion.textContent = `Your score is ${score} / ${questions.length}`;
+	answerContainer.innerHTML = "";
+	document.getElementById("title").textContent = "result";
+	nextButton.style.display = "none";
+
+	// Create a reload button
+	const reloadButton = document.createElement("button");
+	reloadButton.textContent = "start again";
+	answerContainer.appendChild(reloadButton);
+	reloadButton.style.width = "10rem";
+	reloadButton.style.textTransform = "capitalize";
+
+	// center text
+	document.querySelector(".quiz__wrapper").style.textAlign = "center";
+	document.querySelector(".quiz_question").style.alignItems = "center";
+
+	reloadButton.addEventListener("click", () => {
+		location.reload();
+	});
+}
+
+nextButton.addEventListener("click", () => {
+	if (questionIndex < questions.length - 1){
+		questionIndex++;
+		displayQuestion();
+	}
+	else {
+		displayScore();
+	}
+})
+
+displayQuestion();

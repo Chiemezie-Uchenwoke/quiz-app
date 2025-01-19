@@ -53,17 +53,20 @@ body{
 }
 
 .quiz_question {
+    width: 100%;
+    text-align: left;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 1.5rem;
 }
 
 .quiz_question p{
     text-transform: capitalize;
     font-size: 1rem;
-    margin-inline: auto;
+    /* margin-inline: auto; */
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-weight: 600;
 }
@@ -143,6 +146,7 @@ body{
 
     .quiz_question p{
         font-size: 1.4rem;
+        /* text-align: left; */
     }
 
    /*  .answer_btn{
