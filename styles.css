@@ -26,6 +26,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
 }
 
 .intro h1,p{
@@ -40,7 +41,7 @@ body{
 }
 
 .intro h1{
-    font-size: 2rem;
+    font-size: 1.7rem;
     text-align: center;
 }
 

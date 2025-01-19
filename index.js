@@ -247,6 +247,7 @@ const displayQuestion = () => {
 
 			if (dataCheck){
 				e.target.style.backgroundColor = "#FFC857";
+				e.target.style.color = "#1A1A1A";
 				score++;
 			} else {
 				e.target.style.backgroundColor = "red";
