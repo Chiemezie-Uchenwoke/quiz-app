@@ -69,6 +69,7 @@ body{
     justify-content: flex-start;
     align-items: center;
     font-weight: 600;
+    height: 4rem;
 }
 
 .answer_btn{
@@ -145,7 +146,7 @@ body{
     }
 
     .quiz_question p{
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         /* text-align: left; */
     }
 
