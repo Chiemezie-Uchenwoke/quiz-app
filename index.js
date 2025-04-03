@@ -239,7 +239,7 @@ const displayQuestion = () => {
 		const buttonElement = document.createElement("button");
 		buttonElement.innerText = answer.option;
 		buttonElement.dataset.check = answer.correct;
-		console.log(buttonElement)
+		// console.log(buttonElement)
 		answerContainer.appendChild(buttonElement);
 
 		buttonElement.addEventListener("click", (e) => {
